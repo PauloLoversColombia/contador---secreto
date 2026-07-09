@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuenta Regresiva</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+    color:white;
+    font-family:Arial, sans-serif;
+    text-align:center;
+}
+
+.caja{
+    padding:30px;
+    border-radius:20px;
+    background:rgba(255,255,255,0.1);
+}
+
+#contador{
+    font-size:40px;
+    margin-top:20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="caja">
+    <h1>Mi Cuenta Regresiva</h1>
+    <div id="contador"></div>
+</div>
+
+<script>
+const fechaObjetivo = new Date("2026-12-31T23:59:59").getTime();
+
+setInterval(() => {
+    const ahora = new Date().getTime();
+    const diferencia = fechaObjetivo - ahora;
+
+    const dias = Math.floor(diferencia/(1000*60*60*24));
+    const horas = Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
+    const minutos = Math.floor((diferencia%(1000*60*60))/(1000*60));
+    const segundos = Math.floor((diferencia%(1000*60))/1000);
+
+    document.getElementById("contador").innerHTML =
+    dias + " días " + horas + " h " + minutos + " m " + segundos + " s";
+},1000);
+</script>
+
+</body>
+</html>
