@@ -3,56 +3,299 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cuenta Regresiva</title>
+<title>Paulo Lovers</title>
 
 <style>
-body{
+
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    overflow:hidden;
+}
+
+/* PANTALLA ACCESO */
+
+#acceso{
+    background:#b30000;
+    width:100vw;
     height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
-    background:#111;
-    color:white;
-    font-family:Arial, sans-serif;
+}
+
+.panel{
     text-align:center;
+    color:white;
 }
 
-.caja{
-    padding:30px;
-    border-radius:20px;
-    background:rgba(255,255,255,0.1);
+.logo{
+    width:220px;
+    margin-bottom:20px;
 }
 
-#contador{
+.numero{
+    font-size:120px;
+    font-weight:bold;
+}
+
+.nombre{
     font-size:40px;
-    margin-top:20px;
+    letter-spacing:4px;
+    margin-bottom:25px;
 }
+
+input{
+    padding:12px;
+    width:220px;
+    font-size:18px;
+    text-align:center;
+    border:none;
+    border-radius:8px;
+}
+
+button{
+    padding:12px 25px;
+    margin-left:10px;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+#error{
+    margin-top:15px;
+    color:#ffd4d4;
+}
+
+/* PANTALLA CONTADOR */
+
+#contadorPage{
+    display:none;
+    background:black;
+    color:white;
+    width:100vw;
+    height:100vh;
+    text-align:center;
+    position:relative;
+}
+
+.leon{
+    width:100%;
+    max-height:320px;
+    object-fit:cover;
+}
+
+#ojos{
+    position:absolute;
+    top:85px;
+    left:50%;
+    transform:translateX(-50%);
+    width:520px;
+    pointer-events:none;
+}
+
+.ojo{
+    width:36px;
+    height:36px;
+    background:white;
+    border-radius:50%;
+    position:absolute;
+}
+
+#ojo1{
+    top:0;
+    left:130px;
+}
+
+#ojo2{
+    top:0;
+    right:130px;
+}
+
+#tiempo{
+    margin-top:40px;
+    font-size:55px;
+    font-weight:bold;
+}
+
+.frase{
+    margin-top:25px;
+    font-size:24px;
+    letter-spacing:2px;
+}
+
+.footer{
+    position:absolute;
+    bottom:20px;
+    left:20px;
+    color:#888;
+    font-size:18px;
+}
+
 </style>
 </head>
-
 <body>
 
-<div class="caja">
-    <h1>Mi Cuenta Regresiva</h1>
-    <div id="contador"></div>
+<!-- ACCESO -->
+
+<div id="acceso">
+
+    <div class="panel">
+
+        <img
+        class="logo"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Lion_waiting_in_Namibia.jpg/512px-Lion_waiting_in_Namibia.jpg">
+
+        <div class="numero">23</div>
+
+        <div class="nombre">
+            PAULO LONDRA
+        </div>
+
+        <input
+        id="codigo"
+        type="password"
+        placeholder="Código">
+
+        <button onclick="entrar()">
+            Entrar
+        </button>
+
+        <div id="error"></div>
+
+    </div>
+
+</div>
+
+<!-- CONTADOR -->
+
+<div id="contadorPage">
+
+    <img
+    class="leon"
+    src="https://images.unsplash.com/photo-1546182990-dffeafbe841d">
+
+    <div id="ojos">
+        <div class="ojo" id="ojo1"></div>
+        <div class="ojo" id="ojo2"></div>
+    </div>
+
+    <div id="tiempo"></div>
+
+    <div class="frase">
+        Un león anda suelto en Bogotá
+    </div>
+
+    <div class="footer">
+        Paulo Lovers invita
+    </div>
+
 </div>
 
 <script>
-const fechaObjetivo = new Date("2026-12-31T23:59:59").getTime();
 
-setInterval(() => {
-    const ahora = new Date().getTime();
-    const diferencia = fechaObjetivo - ahora;
+/* CODIGO */
 
-    const dias = Math.floor(diferencia/(1000*60*60*24));
-    const horas = Math.floor((diferencia%(1000*60*60*24))/(1000*60*60));
-    const minutos = Math.floor((diferencia%(1000*60*60))/(1000*60));
-    const segundos = Math.floor((diferencia%(1000*60))/1000);
+function entrar(){
 
-    document.getElementById("contador").innerHTML =
-    dias + " días " + horas + " h " + minutos + " m " + segundos + " s";
+    let codigo =
+    document.getElementById("codigo").value;
+
+    if(codigo === "PL0808"){
+
+        document.getElementById("acceso").style.display="none";
+
+        document.getElementById("contadorPage").style.display="block";
+
+    }else{
+
+        document.getElementById("error").innerHTML=
+        "Código incorrecto";
+
+    }
+
+}
+
+/* CUENTA REGRESIVA */
+
+const fechaObjetivo =
+new Date("August 7, 2026 00:00:00").getTime();
+
+setInterval(()=>{
+
+    let ahora = new Date().getTime();
+
+    let diferencia =
+    fechaObjetivo - ahora;
+
+    let dias =
+    Math.floor(diferencia/(1000*60*60*24));
+
+    let horas =
+    Math.floor((diferencia%(1000*60*60*24))
+    /(1000*60*60));
+
+    let minutos =
+    Math.floor((diferencia%(1000*60*60))
+    /(1000*60));
+
+    let segundos =
+    Math.floor((diferencia%(1000*60))
+    /1000);
+
+    document.getElementById("tiempo")
+    .innerHTML =
+    dias + "d " +
+    horas + "h " +
+    minutos + "m " +
+    segundos + "s";
+
 },1000);
+
+/* OJOS SIGUIENDO CURSOR */
+
+document.addEventListener("mousemove",(e)=>{
+
+    moverOjo("ojo1",e);
+    moverOjo("ojo2",e);
+
+});
+
+function moverOjo(id,e){
+
+    const ojo =
+    document.getElementById(id);
+
+    const rect =
+    ojo.getBoundingClientRect();
+
+    const x =
+    rect.left + rect.width/2;
+
+    const y =
+    rect.top + rect.height/2;
+
+    const angulo =
+    Math.atan2(e.clientY-y,
+    e.clientX-x);
+
+    const moverX =
+    Math.cos(angulo)*8;
+
+    const moverY =
+    Math.sin(angulo)*8;
+
+    ojo.style.transform =
+    `translate(${moverX}px,${moverY}px)`;
+
+}
+
 </script>
 
 </body>
