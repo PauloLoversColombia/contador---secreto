@@ -3,95 +3,341 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paulo Lovers</title>
+
+<title>Project 23</title>
+
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
-body{overflow:hidden;background:#000}
-#acceso{background:#000;width:100vw;height:100vh;display:flex;justify-content:center;align-items:center}
-.panel{text-align:center;color:#fff}
-.logo{width:220px;margin-bottom:20px}
-.numero{font-size:120px;font-weight:bold}
-.nombre{font-size:40px;letter-spacing:4px;margin-bottom:25px}
-input{padding:12px;width:220px;font-size:18px;text-align:center;border:none;border-radius:8px}
-button{padding:12px 25px;margin-left:10px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
-#error{margin-top:15px;color:#ffd4d4}
-#contadorPage{display:none;background:#000;color:#fff;width:100vw;height:100vh;text-align:center;position:relative}
-.leon{position:relative;width:100%;height:320px;overflow:hidden}
-.leon img{width:100%;height:100%;object-fit:contain;display:block}
-#ojos{position:absolute;inset:0;pointer-events:none}
-.ojo{
-position:absolute;
-width:34px;
-height:34px;
-background:#000;
-border-radius:50%;
-transform:translate(-50%,-50%);
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
-#ojo1{left:30.3%;top:46.3%;}
-#ojo2{left:73.3%;top:46.3%;}
-#tiempo{margin-top:40px;font-size:55px;font-weight:bold}
-.frase{margin-top:25px;font-size:24px;letter-spacing:2px}
-.footer{position:absolute;bottom:20px;left:20px;color:#888;font-size:18px}
+
+body{
+background:black;
+overflow:hidden;
+color:white;
+}
+
+/* =======================
+PANTALLA DE ACCESO
+======================= */
+
+#acceso{
+width:100vw;
+height:100vh;
+background:#000;
+display:flex;
+justify-content:center;
+align-items:center;
+position:relative;
+}
+
+.fondoAcceso{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0.25;
+}
+
+.panel{
+position:relative;
+z-index:10;
+text-align:center;
+max-width:700px;
+padding:30px;
+}
+
+.logo{
+width:180px;
+margin-bottom:20px;
+}
+
+.project{
+font-size:18px;
+letter-spacing:12px;
+margin-bottom:10px;
+}
+
+.numero{
+font-size:120px;
+font-weight:900;
+line-height:1;
+}
+
+.sub{
+letter-spacing:6px;
+font-size:12px;
+color:#888;
+margin-bottom:40px;
+}
+
+.access{
+font-size:28px;
+letter-spacing:8px;
+margin-bottom:15px;
+}
+
+.access2{
+font-size:13px;
+letter-spacing:4px;
+color:#aaa;
+margin-bottom:30px;
+}
+
+input{
+width:260px;
+padding:15px;
+background:#111;
+border:1px solid #444;
+color:white;
+font-size:20px;
+text-align:center;
+border-radius:10px;
+}
+
+button{
+margin-top:20px;
+padding:15px 40px;
+background:transparent;
+border:1px solid #888;
+color:white;
+cursor:pointer;
+font-size:16px;
+letter-spacing:3px;
+border-radius:10px;
+}
+
+button:hover{
+background:#222;
+}
+
+#error{
+margin-top:20px;
+color:#ff4d4d;
+height:20px;
+}
+
+.credito{
+position:absolute;
+bottom:20px;
+left:20px;
+font-size:14px;
+color:#888;
+}
+
+/* =======================
+PANTALLA CONTADOR
+======================= */
+
+#contadorPage{
+display:none;
+width:100vw;
+height:100vh;
+background:black;
+text-align:center;
+position:relative;
+overflow:auto;
+}
+
+.mirada{
+width:100%;
+max-height:420px;
+object-fit:cover;
+opacity:0.95;
+}
+
+.contenido{
+padding:20px;
+}
+
+.titulo{
+margin-top:15px;
+font-size:18px;
+letter-spacing:8px;
+color:#aaa;
+}
+
+#contador{
+margin-top:30px;
+font-size:55px;
+font-weight:bold;
+}
+
+.frase{
+margin-top:25px;
+font-size:24px;
+letter-spacing:2px;
+}
+
+.footer{
+position:absolute;
+left:20px;
+bottom:20px;
+font-size:16px;
+color:#888;
+}
+
 </style>
 </head>
+
 <body>
 
+<!-- PANTALLA ACCESO -->
+
 <div id="acceso">
+
+<img
+class="fondoAcceso"
+src="WhatsApp Image 2026-07-09 at 3.24.01 PM.jpeg">
+
 <div class="panel">
-<img class="logo" src="WhatsApp Image 2026-07-09 at 3.33.32 PM.jpeg">
+
+<img
+class="logo"
+src="WhatsApp Image 2026-07-09 at 3.33.32 PM.jpeg">
+
+<div class="project">PROJECT</div>
+
 <div class="numero">23</div>
-<div class="nombre">PAULO LONDRA</div>
-<input id="codigo" type="password" placeholder="Código">
-<button onclick="entrar()">Entrar</button>
-<div id="error"></div>
-</div>
+
+<div class="sub">PAULO LONDRA</div>
+
+<div class="access">
+ACCESS REQUIRED
 </div>
 
+<div class="access2">
+INTRODUCE EL CÓDIGO DE ACCESO
+</div>
+
+<input
+id="codigo"
+type="password"
+placeholder="Código">
+
+<br>
+
+<button onclick="entrar()">
+INGRESAR
+</button>
+
+<div id="error"></div>
+
+</div>
+
+<div class="credito">
+PAULO LONDRA
+</div>
+
+</div>
+
+<!-- PANTALLA CONTADOR -->
+
 <div id="contadorPage">
-<div class="leon">
-<img src="WhatsApp Image 2026-07-09 at 3.24.01 PM.jpeg">
-<div id="ojos">
-<div class="ojo" id="ojo1"></div>
-<div class="ojo" id="ojo2"></div>
+
+<img
+class="mirada"
+src="WhatsApp Image 2026-07-09 at 3.24.01 PM.jpeg">
+
+<div class="contenido">
+
+<div class="titulo">
+PROJECT 23
 </div>
+
+<div id="contador"></div>
+
+<div class="frase">
+Un león anda suelto en Bogotá
 </div>
-<div id="tiempo"></div>
-<div class="frase">Un león anda suelto en Bogotá</div>
-<div class="footer">Paulo Lovers invita</div>
+
+</div>
+
+<div class="footer">
+Paulo Lovers invita
+</div>
+
 </div>
 
 <script>
+
 function entrar(){
- const codigo=document.getElementById("codigo").value;
- if(codigo==="PL0808"){
-  acceso.style.display="none";
-  contadorPage.style.display="block";
- }else{
-  error.textContent="Código incorrecto";
- }
+
+const codigo =
+document.getElementById("codigo").value;
+
+if(codigo === "PL0808"){
+
+document.getElementById("acceso").style.display="none";
+document.getElementById("contadorPage").style.display="block";
+
+}else{
+
+document.getElementById("error").innerHTML =
+"ACCESS DENIED";
+
 }
 
-const fechaObjetivo=new Date("August 7, 2026 00:00:00").getTime();
+}
 
-setInterval(()=>{
- let d=fechaObjetivo-Date.now();
- let dias=Math.floor(d/86400000);
- let horas=Math.floor((d%86400000)/3600000);
- let minutos=Math.floor((d%3600000)/60000);
- let segundos=Math.floor((d%60000)/1000);
- tiempo.textContent=`${dias}d ${horas}h ${minutos}m ${segundos}s`;
-},1000);
+const fechaObjetivo =
+new Date("2026-08-07T00:00:00").getTime();
 
-document.addEventListener("mousemove",e=>{
- document.querySelectorAll(".ojo").forEach(ojo=>{
-   const r=ojo.getBoundingClientRect();
-   const cx=r.left+r.width/2;
-   const cy=r.top+r.height/2;
-   const ang=Math.atan2(e.clientY-cy,e.clientX-cx);
-   ojo.style.marginLeft=(Math.cos(ang)*8)+"px";
-   ojo.style.marginTop=(Math.sin(ang)*8)+"px";
- });
-});
+function actualizarContador(){
+
+const ahora =
+new Date().getTime();
+
+const diferencia =
+fechaObjetivo - ahora;
+
+if(diferencia <= 0){
+
+document.getElementById("contador").innerHTML =
+"00d 00h 00m 00s";
+
+return;
+}
+
+const dias =
+Math.floor(diferencia/(1000*60*60*24));
+
+const horas =
+Math.floor(
+(diferencia%(1000*60*60*24))
+/
+(1000*60*60)
+);
+
+const minutos =
+Math.floor(
+(diferencia%(1000*60*60))
+/
+(1000*60)
+);
+
+const segundos =
+Math.floor(
+(diferencia%(1000*60))
+/
+1000
+);
+
+document.getElementById("contador").innerHTML =
+dias + "d " +
+horas + "h " +
+minutos + "m " +
+segundos + "s";
+
+}
+
+actualizarContador();
+setInterval(actualizarContador,1000);
+
 </script>
 
 </body>
